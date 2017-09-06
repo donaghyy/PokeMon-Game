@@ -16,7 +16,7 @@ function headerBattler () {
     header.innerHTML = "PokeBattler";
 }
 
-function pokeSubmit(){
+function Submit(){
     var param = document.getElementById("pokeInput").value;
     var pokeURL = "http://pokeapi.co/api/v1/pokemon/" + param;
     var pokeURL2 = "http://pokeapi.co/api/v2/pokemon/" + param;
@@ -40,8 +40,6 @@ function pokeSubmit(){
 
         $.getJSON(pokeURL2, function(data3){
             //console.log(data3);
-
-            //console.log(JSON.stringify(data, null, "  "));
             var imageURI = data3.sprites.front_default;
 
             console.log("Number: ", pokeID);
@@ -53,23 +51,23 @@ function pokeSubmit(){
             console.log("Image URI: ", imageURI);
 
 
-            var li = "";
-            li += '<li><img src="' + imageURI + '">';
-            li += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
-            li += '<p>Type 1: ' + pokeType1 + '</p>';
+            var displayElement = "";
+            displayElement += '<li><img src="' + imageURI + '">';
+            displayElement += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
+            displayElement += '<p>Type 1: ' + pokeType1 + '</p>';
 
-            // only display Type 2 if it is not null
+
             if (pokeType2 != null){
-                li += '<p>Type 2: ' + pokeType2 + '</p>';
+                displayElement += '<p>Type 2: ' + pokeType2 + '</p>';
             }
 
-            li += '<p>' + pokeDescription + '</p>';
-            li += '</li>';
+            displayElement += '<p>' + pokeDescription + '</p>';
+            displayElement += '</li>';
 
             $("#pokeDetails").empty();
 
 
-            $("#pokeDetails").append(li).promise().done(function(){
+            $("#pokeDetails").append(displayElement).promise().done(function(){
                 $(this).listview("refresh");
             });
 
