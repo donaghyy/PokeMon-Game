@@ -1,0 +1,26 @@
+<div ng-controller="searchController as ctrl">
+    <div>
+
+        <div data-role="page" id="pokeSearch-page">
+            <div data-role="header" data-theme="b">
+
+            </div>
+            <div data-role="main" class="ui-content">
+                <form id="pokeForm" action="#pokeDetails-page" method="post">
+                    <div>
+                            <input style="width: 300px; text-align: center;" type="text" name="pokeInput" id="pokeInput" placeholder="Pokemon Name/Number" value="">
+                    </div>
+                    <br>
+                    <div>
+                        <a class="ui-btn" onclick="pokeSubmit();">Search</a>
+                    </div>
+                </form>
+                <div>
+                    <ul data-role="listview" data-inset="true" id="pokeDetails">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
